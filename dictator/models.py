@@ -18,8 +18,8 @@ S285-S300.
 
 class Constants(BaseConstants):
     name_in_url = 'dictator'
-    players_per_group = 2
-    num_rounds = 1
+    players_per_group = 1
+    num_rounds = 10
 
     instructions_template = 'dictator/Instructions.html'
 
@@ -32,6 +32,9 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
+    pass
+
+class Player(BasePlayer):
     kept = models.CurrencyField(
         doc="""Amount dictator decided to keep for himself""",
         min=0, max=Constants.endowment,
@@ -43,7 +46,3 @@ class Group(BaseGroup):
         p2 = self.get_player_by_id(2)
         p1.payoff = self.kept
         p2.payoff = Constants.endowment - self.kept
-
-
-class Player(BasePlayer):
-    pass
