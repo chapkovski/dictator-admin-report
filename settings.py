@@ -107,6 +107,12 @@ SESSION_CONFIG_DEFAULTS = {
 
 
 SESSION_CONFIGS = [
+    {
+        'name': 'dictator',
+        'display_name': "Multiple rounds Dictator Game",
+        'num_demo_participants': 1,
+        'app_sequence': ['dictator'],
+    },
     # {
     #     'name': '...',
     #     'display_name': '...',
