@@ -28,6 +28,8 @@ class ResultsWaitPage(WaitPage):
 
 
 class Results(Page):
+    def is_displayed(self):
+        return self.round_number == Constants.num_rounds 
     def offer(self):
         return Constants.endowment - self.group.kept
 
@@ -38,8 +40,8 @@ class Results(Page):
 
 
 page_sequence = [
-    Introduction,
+    # Introduction,
     Offer,
-    ResultsWaitPage,
+    # ResultsWaitPage,
     Results
 ]

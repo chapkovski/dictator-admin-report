@@ -42,7 +42,7 @@ class Player(BasePlayer):
     )
 
     def set_payoffs(self):
-        p1 = self.get_player_by_id(1)
-        p2 = self.get_player_by_id(2)
-        p1.payoff = self.kept
-        p2.payoff = Constants.endowment - self.kept
+        # p1 = self.get_player_by_id(1)
+        # p2 = self.get_player_by_id(2)
+        self.payoff = self.kept
+        # p2.payoff = Constants.endowment - self.kept
