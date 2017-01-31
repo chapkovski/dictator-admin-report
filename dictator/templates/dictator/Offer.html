@@ -1,14 +1,14 @@
 {% extends "global/Base.html" %}
 {% load otree_tags %}
 
-{% block title %}Your Decision{% endblock %}
+{% block title %}Period {{ subsession.round_number }} of {{ Constants.num_rounds }}{% endblock %}
 
 {% block content %}
 <p>
 You are <strong>Participant 1</strong>. Now please decide how many points you will keep for yourself.
 </p>
 
-{% formfield group.kept %}
+{% formfield player.kept %}
 
 {% next_button %}
 
