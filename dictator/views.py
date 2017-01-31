@@ -2,6 +2,7 @@ from . import models
 from ._builtin import Page, WaitPage
 from .models import Constants
 import random
+from otree.common import safe_json
 
 class Introduction(Page):
     pass
