@@ -21,8 +21,8 @@ class Offer(Page):
                 listOfNumbers.append(int(p.kept))
         toadd = ['']*(Constants.num_rounds-len(listOfNumbers))
         listOfNumbers += toadd
-        round_numbers = safe_json(list(range(numLow+1, numHigh)))
-        print("LIST OF NUMBERS: {}".format(listOfNumbers))
+        round_numbers = safe_json(list(range(1, Constants.num_rounds+1)))
+        print("LIST OF rounds: {}".format(round_numbers))
         myseries = []
         myseries.append({
         'name': 'decisions',
