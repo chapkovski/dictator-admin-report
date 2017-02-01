@@ -113,6 +113,12 @@ SESSION_CONFIGS = [
         'num_demo_participants': 1,
         'app_sequence': ['dictator'],
     },
+    {
+        'name': 'dictatorMU',
+        'display_name': "Dictator Game + beliefs for teaching",
+        'num_demo_participants': 1,
+        'app_sequence': ['dictatorMU'],
+    },
     # {
     #     'name': '...',
     #     'display_name': '...',
