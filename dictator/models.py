@@ -24,7 +24,7 @@ class Constants(BaseConstants):
     instructions_template = 'dictator/Instructions.html'
 
     # Initial amount allocated to the dictator
-    endowment = c(100)
+    endowment = (100)
 
 
 class Subsession(BaseSubsession):
