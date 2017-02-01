@@ -16,8 +16,11 @@ class Offer(Page):
         numHigh = 10
         n = 10
         listOfNumbers = []
-        for x in range (0, n):
-            listOfNumbers.append(random.randint(numLow, numHigh))
+        for p in self.player.in_all_rounds():
+            if p.kept is not None:
+                listOfNumbers.append(int(p.kept))
+        toadd = ['']*(Constants.num_rounds-len(listOfNumbers))
+        listOfNumbers += toadd
         round_numbers = safe_json(list(range(numLow+1, numHigh)))
         print("LIST OF NUMBERS: {}".format(listOfNumbers))
         myseries = []
@@ -25,7 +28,7 @@ class Offer(Page):
         'name': 'decisions',
         'data': listOfNumbers})
         series_to_pass = safe_json(myseries)
-        print("jsonied series: {} =============".format(series_to_pass))
+        # print("jsonied series: {} =============".format(series_to_pass))
         return {
             'series_to_pass':series_to_pass,
             'round_numbers':round_numbers,

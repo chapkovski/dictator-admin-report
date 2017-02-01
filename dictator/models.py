@@ -19,7 +19,7 @@ S285-S300.
 class Constants(BaseConstants):
     name_in_url = 'dictator'
     players_per_group = None
-    num_rounds = 1
+    num_rounds = 10
 
     instructions_template = 'dictator/Instructions.html'
 
@@ -28,7 +28,9 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    pass
+    def vars_for_admin_report(self):
+        payoffs = sorted([p.payoff for p in self.get_players()])
+        return {'payoffs': payoffs}
 
 
 class Group(BaseGroup):
@@ -46,5 +48,5 @@ class Player(BasePlayer):
         # p1 = self.get_player_by_id(1)
         # p2 = self.get_player_by_id(2)
         self.payoff = (self.kept)
-        self.payoff=str(self.payoff)
+        # self.payoff=str(self.payoff)
         # p2.payoff = Constants.endowment - self.kept
