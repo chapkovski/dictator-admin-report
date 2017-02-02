@@ -24,7 +24,7 @@ class Constants(BaseConstants):
     instructions_template = 'dictator/Instructions.html'
 
     # Initial amount allocated to the dictator
-    endowment = (100)
+    endowment = 10
 
 
 class Subsession(BaseSubsession):
@@ -37,22 +37,22 @@ class Group(BaseGroup):
     pass
 
 class Player(BasePlayer):
-    kept = models.CurrencyField(
+    kept = models.PositiveIntegerField(
         doc="""Amount dictator decided to keep for himself""",
         min=0, max=Constants.endowment,
         verbose_name='I will keep (from 0 to %i)' % Constants.endowment
     )
-    belief = models.CurrencyField(
+    belief = models.PositiveIntegerField(
     doc="""Amount dictator beliefs others would keep for themselves""",
     min=0, max=Constants.endowment,
-    verbose_name='How much on average you believe all other participants will keep for themselves? (from 0 to %i)' % Constants.endowment
+    verbose_name='How much  you believe all other participants will keep for themselves on average? (from 0 to %i)' % Constants.endowment
     )
-    norm = models.CurrencyField(
+    norm = models.PositiveIntegerField(
     doc="""Amount dictator thinks people should keep for themselves""",
     min=0, max=Constants.endowment,
     verbose_name='In your opinion what amount should a person keep for him/herself? (from 0 to %i)' % Constants.endowment
     )
-    others_belief = models.CurrencyField(
+    others_belief = models.PositiveIntegerField(
         doc="""Amount that dictator belives others expect from him to keep""",
         min=0, max=Constants.endowment,
         verbose_name='What amount you think other participants expect from you? (from 0 to %i)' % Constants.endowment

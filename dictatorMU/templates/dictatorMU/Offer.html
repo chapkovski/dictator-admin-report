@@ -17,4 +17,8 @@
 {% endfor %}
 <!-- <div id="highcharts_container2" style="width: 700px;"></div> -->
 {% next_button %}
-{% include Constants.instructions_template %} {% endblock %}
+{% if instructions %}
+  {% include instructions %}
+{% endif %}
+
+{% endblock %}

@@ -52,10 +52,12 @@ class Offer(Page):
 class MyPage(Page):
     form_model = models.Player
     template_name = 'dictatorMU/Offer.html'
+    title = ''
+    instructions = ''
     def vars_for_template(self):
-        title = ''
         vs = {
             'title': self.title,
+            'instructions': self.instructions,
         }
         vs.update(self.extra_vars())
         return vs
@@ -66,18 +68,22 @@ class MyPage(Page):
 class Kept(MyPage):
     form_fields = ['kept']
     title = 'Decision'
+    instructions = 'dictatorMU/InstructionsDecision.html'
 
 class Belief(MyPage):
     form_fields = ['belief']
     title = 'Belief'
+    instructions = 'dictatorMU/InstructionsBelief.html'
 
 class Norm(MyPage):
     form_fields = ['norm']
     title = 'Norm'
+    instructions = ''
 
 class Others_belief(MyPage):
     form_fields = ['others_belief']
     title = "Others' beliefs"
+    instructions = 'dictatorMU/InstructionsOtherBelief.html'
 
 class Results(Page):
     def is_displayed(self):
@@ -86,9 +92,21 @@ class Results(Page):
         return Constants.endowment - self.player.kept
 
     def vars_for_template(self):
-        self.player.set_payoffs()
+        print('PLAYER KEPT: {}'.format(self.player.kept))
+        all_decisions = [random.randint(0,Constants.endowment) for r in range(25)]
+        all_beliefs = [random.randint(0,Constants.endowment) for r in range(25)]
+        all_norms = [random.randint(0,Constants.endowment) for r in range(25)]
+        all_others_beliefs = [random.randint(0,Constants.endowment) for r in range(25)]
+
         return {
-            'offer': self.player.payoff
+            'all_decisions':safe_json(all_decisions),
+            'all_beliefs':safe_json(all_beliefs),
+            'all_norms':safe_json(all_norms),
+            'all_others_beliefs':safe_json(all_others_beliefs),
+            'average_decision':sum(all_decisions)/len(all_decisions),
+            'average_belief':sum(all_beliefs)/len(all_beliefs),
+            'average_norm':sum(all_norms)/len(all_norms),
+            'average_others_belief':sum(all_others_beliefs)/len(all_others_beliefs),
         }
 
 
